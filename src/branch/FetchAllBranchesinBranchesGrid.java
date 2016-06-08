@@ -8,7 +8,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
+
 
 import wait.ImplicitWait;
 import config.Reading_Properties;
@@ -39,7 +39,7 @@ public class FetchAllBranchesinBranchesGrid {
 			{ 
 				driver.findElement(By.xpath(rp.getPropertyValue("CreateBranch"))).click();
 				driver.findElement(By.id(rp.getPropertyValue("Branch_Name"))).clear();
-				driver.findElement(By.id(rp.getPropertyValue("Branch_Name"))).sendKeys("SamplBranch");
+				driver.findElement(By.id(rp.getPropertyValue("Branch_Name"))).sendKeys("Sample Branch");
 				break;
 			}
 			else
@@ -61,19 +61,22 @@ public class FetchAllBranchesinBranchesGrid {
 			
 	driver.findElement(By.xpath(rp.getPropertyValue("Working_Time_From"))).sendKeys("0");
 			driver.findElement(By.xpath(rp.getPropertyValue("Working_Time_To"))).sendKeys("23");
-			WebElement dept=driver.findElement(By.xpath(rp.getPropertyValue("Dept")));
-			dept.click();
+			driver.findElement(By.xpath(rp.getPropertyValue("Dept"))).click();
+			
 			Actions actions = new Actions(driver);
 			int deptvalues= driver.findElements(By.xpath(rp.getPropertyValue("Department"))).size();
 			for(int i = 0; i <= deptvalues;i++){
+				for(int j=0;j<=i;j++)
+				{
 			
 			    actions.sendKeys(Keys.DOWN).build().perform();//press down arrow key
 			    actions.sendKeys(Keys.ENTER).build().perform();//press enter
+			    driver.findElement(By.xpath(rp.getPropertyValue("Dept"))).click();
 
 			    /*here "position" is , ur desired combo box option position,
 				for ex. u want to choose 3rd option,so ur "position" will be 3.*/
 			}
-
+			}
 			
 			
 			driver.findElement(By.xpath(rp.getPropertyValue("Dept_Category"))).click();
