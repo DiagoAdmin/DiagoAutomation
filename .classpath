@@ -2,9 +2,9 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="lib" path="D:/krishna back up/Diago Automation/Jars/selenium-server-standalone-2.53.0.jar"/>
-	<classpathentry kind="lib" path="D:/krishna back up/Diago Automation/Jars/sqljdbc4-2.0.jar"/>
-	<classpathentry kind="lib" path="D:/krishna back up/Diago Automation/Jars/sqljdbc4-3.0.jar"/>
-	<classpathentry kind="lib" path="D:/krishna back up/Diago Automation/Jars/sqlserverjdbc.jar"/>
+	<classpathentry kind="lib" path="D:/krishna back up/selenium/JARS/selenium-server-standalone-2.48.2.jar"/>
+	<classpathentry kind="lib" path="D:/krishna back up/selenium/JARS/sqljdbc4-2.0.jar"/>
+	<classpathentry kind="lib" path="D:/krishna back up/selenium/JARS/sqljdbc4-3.0.jar"/>
+	<classpathentry kind="lib" path="D:/krishna back up/selenium/JARS/sqlserverjdbc.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

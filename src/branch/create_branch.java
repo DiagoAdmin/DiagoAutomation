@@ -20,6 +20,7 @@ public class create_branch {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			System.out.println();
 		}
 		ImplicitWait.wait(driver);
 		driver.findElement(By.xpath(rp.getPropertyValue("Branches"))).click();

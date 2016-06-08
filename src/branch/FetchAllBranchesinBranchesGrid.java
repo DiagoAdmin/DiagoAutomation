@@ -56,7 +56,7 @@ public class FetchAllBranchesinBranchesGrid {
 			driver.findElement(By.id(rp.getPropertyValue("Building_Name"))).sendKeys("New Branch");
 			driver.findElement(By.xpath(rp.getPropertyValue("Branch_Adress_Next"))).click();
 			ImplicitWait.wait(driver);
-			/*driver.switchTo().frame(rp.getPropertyValue("AllDays_Frame"));*/
+	
 			driver.findElement(By.xpath(rp.getPropertyValue("AllDays_Frame"))).click();
 			
 	driver.findElement(By.xpath(rp.getPropertyValue("Working_Time_From"))).sendKeys("0");
