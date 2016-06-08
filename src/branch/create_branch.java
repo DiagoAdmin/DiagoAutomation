@@ -34,6 +34,7 @@ public class create_branch {
 		if(driver.getPageSource().contains("Branch Already Exists"))
 		{ 
 			driver.close();
+			System.out.println();
 			
 		}
 		}
