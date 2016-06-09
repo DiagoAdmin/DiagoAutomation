@@ -84,12 +84,16 @@ public class FetchAllBranchesinBranchesGrid {
 			int dept_category=driver.findElements(By.xpath(rp.getPropertyValue("Department_Category"))).size();
 			
 			for(int i = 0; i <= dept_category;i++){
+				for(int j=0;j<=i;j++)
+				{
 				
 			    actions.sendKeys(Keys.DOWN).build().perform();//press down arrow key
 			    actions.sendKeys(Keys.ENTER).build().perform();//press enter
+			    driver.findElement(By.xpath(rp.getPropertyValue("Dept_Category"))).click();
 
 			    /*here "position" is , ur desired combo box option position,
 				for ex. u want to choose 3rd option,so ur "position" will be 3.*/
+			}
 			}
 			driver.findElement(By.xpath(rp.getPropertyValue("AdditionalInfo1"))).click();
 			ImplicitWait.wait(driver);
