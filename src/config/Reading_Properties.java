@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 
 public class Reading_Properties  {
 	Properties prop=new Properties();
-	public void LoadProperties(WebDriver driver) throws IOException
+	public void LoadProperties() throws IOException
 	{
 		String path =System.getProperty("user.dir");							//returns the current project directory path
 		

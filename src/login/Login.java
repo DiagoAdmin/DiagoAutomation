@@ -15,21 +15,23 @@ import wait.*;
 
 public class Login
 {
-	public void DiagoLogin(WebDriver driver) throws SQLException, InterruptedException {
+	WebDriver driver;
+	public void DiagoLogin() throws SQLException, InterruptedException {
 		
 		try
 		{
 			Boolean flag = true;
 			if (flag)
 			{
-				Connection conn = SqlConnection.dbConnect(driver);
+				Connection conn = SqlConnection.dbConnect();
 				Statement statement = conn.createStatement();
 				Reading_Properties rp=new Reading_Properties();
-				rp.LoadProperties(driver);
+				rp.LoadProperties();
 				String queryString = rp.getPropertyValue("loginusers");
-				ResultSet rs = statement.executeQuery(queryString);
-				ImplicitWait.wait(driver);
 				
+				ResultSet rs = statement.executeQuery(queryString);
+				
+				ImplicitWait.wait(driver);
 				driver.get(rp.getPropertyValue("diagodomainurl"));
 				driver.manage().window().maximize();
 				
@@ -48,11 +50,11 @@ public class Login
 						
 						ImplicitWait.wait(driver);
 						
-						driver.findElement(By.xpath(rp.getPropertyValue("Group"))).click();
+						/*driver.findElement(By.xpath(rp.getPropertyValue("Group"))).click();*/
 						create_branch cb= new create_branch();
-						cb.Create_Branch(driver);
+						cb.Create_Branch();
 						
-						driver.findElement(By.xpath(rp.getPropertyValue("logout"))).click();
+						/*driver.findElement(By.xpath(rp.getPropertyValue("logout"))).click();*/
 						}
 					}
 				}
@@ -62,4 +64,5 @@ public class Login
 			e.printStackTrace();
 			}
 		}
+	
 	}

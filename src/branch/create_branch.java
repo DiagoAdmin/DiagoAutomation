@@ -8,20 +8,25 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
+
+import com.thoughtworks.selenium.Selenium;
+
 import wait.ImplicitWait;
 import config.Reading_Properties;
 
 public class create_branch {
-	public void Create_Branch(WebDriver driver) throws InterruptedException
+	WebDriver driver;
+	public void Create_Branch() throws Exception
 	  {
 		Reading_Properties rp=new Reading_Properties();
 		try {
-			rp.LoadProperties(driver);
+			rp.LoadProperties();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println();
 		}
+		driver.findElement(By.xpath(rp.getPropertyValue("Group"))).click();
 		ImplicitWait.wait(driver);
 		driver.findElement(By.xpath(rp.getPropertyValue("Branches"))).click();
 		ImplicitWait.wait(driver);
@@ -29,12 +34,16 @@ public class create_branch {
 		FABG.FetchAllBranches(driver);
 		driver.findElement(By.xpath(rp.getPropertyValue("CreateBranch"))).click();
 		ImplicitWait.wait(driver);
-		driver.findElement(By.id(rp.getPropertyValue("Branch_Name"))).sendKeys("New Branch");
+		driver.findElement(By.id(rp.getPropertyValue("Branch_Name"))).sendKeys("test group");
+		String branchexists=driver.findElement(By.id("enterpriseId-error")).getText();
 		try{
-		if(driver.getPageSource().contains("Branch Already Exists"))
+			if(branchexists.contains("Branch Already Exists"))
+		/*if(driver.getPageSource().contains("Branch Already Exists"))*/
 		{ 
 			driver.close();
 			System.out.println();
+			driver.quit();
+			
 			
 		}
 		}
@@ -49,30 +58,34 @@ public class create_branch {
 		/*driver.switchTo().frame(rp.getPropertyValue("AllDays_Frame"));*/
 		driver.findElement(By.xpath(rp.getPropertyValue("AllDays_Frame"))).click();
 		
+	
+		
 driver.findElement(By.xpath(rp.getPropertyValue("Working_Time_From"))).sendKeys("0");
 		driver.findElement(By.xpath(rp.getPropertyValue("Working_Time_To"))).sendKeys("23");
 		WebElement dept=driver.findElement(By.xpath(rp.getPropertyValue("Department")));
 		dept.click();
-		List <WebElement> deptvalues= driver.findElements(By.xpath(rp.getPropertyValue("Department")));
-		/*for(int i = 0; i <= deptvalues.size(); i++){*/
-		for(WebElement i: deptvalues)
-		{
-			i.getText();
-		    Actions actions = new Actions(driver);
-		    actions.sendKeys(Keys.DOWN).build().perform();//press down arrow key
+		List<WebElement> deptvalues= driver.findElements(By.xpath(rp.getPropertyValue("Department")));
+		Actions actions = new Actions(driver);
+		for(int i = 0; i <= deptvalues.size(); i++){
+		/*for(WebElement i: deptvalues)*/
+			for(int j=deptvalues.size();j>=i;j--)
+			{
+			actions.sendKeys(Keys.DOWN).build().perform();//press down arrow key
 		    actions.sendKeys(Keys.ENTER).build().perform();//press enter
+		    driver.findElement(By.xpath(rp.getPropertyValue("Dept"))).click();
+		}
 		}
 
 		//here "position" is , ur desired combo box option position,
 		//for ex. u want to choose 3rd option,so ur "position" will be 3.
 		
-		WebElement dept_category=driver.findElement(By.xpath(rp.getPropertyValue("Department_Category")));
+		/*WebElement dept_category=driver.findElement(By.xpath(rp.getPropertyValue("Department_Category")));
 		
 		Select s=new Select(dept);
 		s.selectByVisibleText("BIO-CHEMISTRY (LAB)");
 		
 		Select s1=new Select(dept_category);
-		s1.selectByVisibleText("Diagnostic");
+		s1.selectByVisibleText("Diagnostic");*/
 		driver.findElement(By.xpath(rp.getPropertyValue("AdditionalInfo1"))).click();
 		driver.findElement(By.xpath(rp.getPropertyValue("AdditionalInfo2"))).click();
 		driver.findElement(By.xpath(rp.getPropertyValue("AdditionalInfo3"))).click();

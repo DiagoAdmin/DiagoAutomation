@@ -5,6 +5,7 @@
     <classes>
       <class name="login.BeforeLogin">
         <methods>
+          <include name="setUp"/>
           <include name="login"/>
           <include name="dbTest"/>
         </methods>

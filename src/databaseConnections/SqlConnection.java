@@ -7,10 +7,10 @@ import org.openqa.selenium.WebDriver;
 import config.Reading_Properties;
 public class SqlConnection {
 	private static Connection conn;
-  public static Connection dbConnect(WebDriver driver) throws IOException 
+  public static Connection dbConnect() throws IOException 
               {
 	  Reading_Properties rp=new Reading_Properties();
-      rp.LoadProperties(driver);
+      rp.LoadProperties();
 	   
 	          try {
 
