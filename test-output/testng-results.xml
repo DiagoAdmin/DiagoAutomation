@@ -2,29 +2,45 @@
 <testng-results skipped="0" failed="1" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="36654" started-at="2016-06-22T08:41:08Z" finished-at="2016-06-22T08:41:45Z">
+  <suite name="Default suite" duration-ms="57642" started-at="2016-06-22T11:49:46Z" finished-at="2016-06-22T11:50:43Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="36654" started-at="2016-06-22T08:41:08Z" finished-at="2016-06-22T08:41:45Z">
+    <test name="Default test" duration-ms="57642" started-at="2016-06-22T11:49:46Z" finished-at="2016-06-22T11:50:43Z">
       <class name="login.BeforeLogin">
-        <test-method status="PASS" signature="dbTest()[pri:0, instance:login.BeforeLogin@aa2946]" name="dbTest" is-config="true" duration-ms="537" started-at="2016-06-22T14:11:08Z" finished-at="2016-06-22T14:11:08Z">
+        <test-method status="PASS" signature="dbTest()[pri:0, instance:login.BeforeLogin@aa2946]" name="dbTest" is-config="true" duration-ms="458" started-at="2016-06-22T17:19:45Z" finished-at="2016-06-22T17:19:46Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- dbTest -->
-        <test-method status="PASS" signature="login()[pri:0, instance:login.BeforeLogin@aa2946]" name="login" is-config="true" duration-ms="2313" started-at="2016-06-22T14:11:08Z" finished-at="2016-06-22T14:11:10Z">
+        <test-method status="PASS" signature="login()[pri:0, instance:login.BeforeLogin@aa2946]" name="login" is-config="true" duration-ms="2486" started-at="2016-06-22T17:19:46Z" finished-at="2016-06-22T17:19:48Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method status="PASS" signature="setUp()[pri:0, instance:login.BeforeLogin@aa2946]" name="setUp" is-config="true" duration-ms="22517" started-at="2016-06-22T14:11:10Z" finished-at="2016-06-22T14:11:33Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:login.BeforeLogin@aa2946]" name="setUp" is-config="true" duration-ms="8340" started-at="2016-06-22T17:19:48Z" finished-at="2016-06-22T17:19:56Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="FAIL" signature="branchCreation()[pri:0, instance:login.BeforeLogin@aa2946]" name="branchCreation" duration-ms="7029" started-at="2016-06-22T14:11:33Z" finished-at="2016-06-22T14:11:40Z">
-          <exception class="java.lang.NullPointerException">
+        <test-method status="FAIL" signature="branchCreation()[pri:0, instance:login.BeforeLogin@aa2946]" name="branchCreation" duration-ms="46777" started-at="2016-06-22T17:19:57Z" finished-at="2016-06-22T17:20:43Z">
+          <exception class="org.openqa.selenium.remote.SessionNotFoundException">
+            <message>
+              <![CDATA[Session ID is null. Using WebDriver after calling quit()?
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:59:12'
+System info: host: 'MWEB-GBD3DUC041', ip: '10.200.2.120', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_91'
+Driver info: driver.version: RemoteWebDriver]]>
+            </message>
             <full-stacktrace>
-              <![CDATA[java.lang.NullPointerException
-	at branch.create_branch.Create_Branch(create_branch.java:24)
-	at login.BeforeLogin.branchCreation(BeforeLogin.java:86)
+              <![CDATA[org.openqa.selenium.remote.SessionNotFoundException: Session ID is null. Using WebDriver after calling quit()?
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:59:12'
+System info: host: 'MWEB-GBD3DUC041', ip: '10.200.2.120', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_91'
+Driver info: driver.version: RemoteWebDriver
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:134)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:82)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:620)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:403)
+	at org.openqa.selenium.By$ById.findElement(By.java:218)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:345)
+	at branch.create_branch.Create_Branch(create_branch.java:58)
+	at login.BeforeLogin.branchCreation(BeforeLogin.java:87)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -51,15 +67,60 @@
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
 ]]>
             </full-stacktrace>
-          </exception> <!-- java.lang.NullPointerException -->
+          </exception> <!-- org.openqa.selenium.remote.SessionNotFoundException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- branchCreation -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:login.BeforeLogin@aa2946]" name="tearDown" is-config="true" duration-ms="4768" started-at="2016-06-22T14:11:40Z" finished-at="2016-06-22T14:11:45Z">
+        <test-method status="FAIL" signature="tearDown()[pri:0, instance:login.BeforeLogin@aa2946]" name="tearDown" is-config="true" duration-ms="0" started-at="2016-06-22T17:20:43Z" finished-at="2016-06-22T17:20:43Z">
+          <exception class="org.openqa.selenium.remote.SessionNotFoundException">
+            <message>
+              <![CDATA[Session ID is null. Using WebDriver after calling quit()?
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:59:12'
+System info: host: 'MWEB-GBD3DUC041', ip: '10.200.2.120', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_91'
+Driver info: driver.version: RemoteWebDriver]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.remote.SessionNotFoundException: Session ID is null. Using WebDriver after calling quit()?
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:59:12'
+System info: host: 'MWEB-GBD3DUC041', ip: '10.200.2.120', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_91'
+Driver info: driver.version: RemoteWebDriver
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:134)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:82)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:620)
+	at org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions$RemoteTimeouts.implicitlyWait(RemoteWebDriver.java:827)
+	at wait.ImplicitWait.wait(ImplicitWait.java:12)
+	at login.BeforeLogin.tearDown(BeforeLogin.java:93)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
+	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:510)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:211)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:138)
+	at org.testng.internal.TestMethodWorker.invokeAfterClassMethods(TestMethodWorker.java:220)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:773)
+	at org.testng.TestRunner.run(TestRunner.java:623)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:357)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:352)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:310)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:259)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1185)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1110)
+	at org.testng.TestNG.run(TestNG.java:1018)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.remote.SessionNotFoundException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="dbClose()[pri:0, instance:login.BeforeLogin@aa2946]" name="dbClose" is-config="true" duration-ms="0" started-at="2016-06-22T14:11:45Z" finished-at="2016-06-22T14:11:45Z">
+        <test-method status="SKIP" signature="dbClose()[pri:0, instance:login.BeforeLogin@aa2946]" name="dbClose" is-config="true" duration-ms="0" started-at="2016-06-22T17:20:43Z" finished-at="2016-06-22T17:20:43Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- dbClose -->

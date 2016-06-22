@@ -7,7 +7,6 @@
         <methods>
           <include name="tearDown"/>
           <include name="setUp"/>
-          <include name="dbClose"/>
           <include name="branchCreation"/>
           <include name="dbTest"/>
           <include name="login"/>

@@ -25,13 +25,14 @@ public class BeforeLogin {
 
 		WebDriver driver;
 		@BeforeSuite
-		public void dbTest() throws IOException
+		public void dbTest() throws Exception
 		{
 			SqlConnection.dbConnect();
 			}
 		@BeforeTest
 		public void login() throws Exception
-		{System.setProperty("webdriver.chrome.driver", "D:\\chromedriver.exe");
+		{
+			System.setProperty("webdriver.chrome.driver", "D:\\chromedriver.exe");
 		driver = new ChromeDriver();
 			
 		}
@@ -83,7 +84,7 @@ public class BeforeLogin {
 		public void branchCreation() throws Exception
 		{
 			create_branch cb= new create_branch();
-			cb.Create_Branch();
+			cb.Create_Branch(driver);
 		}
 @AfterClass
 public void tearDown() throws Exception 

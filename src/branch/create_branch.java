@@ -10,8 +10,8 @@ import wait.ImplicitWait;
 import config.Reading_Properties;
 
 public class create_branch {
-	WebDriver driver;
-	public void Create_Branch() throws Exception
+	/*WebDriver driver;*/
+	public void Create_Branch(WebDriver driver) throws Exception
 	  {
 		Reading_Properties rp=new Reading_Properties();
 		try {
@@ -21,7 +21,8 @@ public class create_branch {
 			e.printStackTrace();
 			System.out.println();
 		}
-		driver.findElement(By.xpath(rp.getPropertyValue("Group"))).click();
+		WebElement ele=driver.findElement(By.xpath(rp.getPropertyValue("Group")));
+		ele.click();
 		ImplicitWait.wait(driver);
 		driver.findElement(By.xpath(rp.getPropertyValue("Branches"))).click();
 		ImplicitWait.wait(driver);
