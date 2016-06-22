@@ -1,16 +1,11 @@
 package branch;
 import java.io.IOException;
 import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
-
-import com.thoughtworks.selenium.Selenium;
-
 import wait.ImplicitWait;
 import config.Reading_Properties;
 
@@ -31,7 +26,14 @@ public class create_branch {
 		driver.findElement(By.xpath(rp.getPropertyValue("Branches"))).click();
 		ImplicitWait.wait(driver);
 		FetchAllBranchesinBranchesGrid FABG=new FetchAllBranchesinBranchesGrid();
-		FABG.FetchAllBranches(driver);
+		/*FABG.FetchAllBranches(driver);*/
+		List<String> txt=FABG.allbranches(driver);
+		if(txt.contains("Sample Branch"))
+		{
+			
+		}
+		System.out.println(txt);
+		ImplicitWait.wait(driver);
 		driver.findElement(By.xpath(rp.getPropertyValue("CreateBranch"))).click();
 		ImplicitWait.wait(driver);
 		driver.findElement(By.id(rp.getPropertyValue("Branch_Name"))).sendKeys("test group");

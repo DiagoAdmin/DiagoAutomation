@@ -7,12 +7,12 @@ import java.sql.Statement;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.Test;
 
-import branch.create_branch;
 import config.Reading_Properties;
 import databaseConnections.SqlConnection;
 import wait.*;
-
+@Test
 public class Login
 {
 	WebDriver driver;
@@ -51,9 +51,6 @@ public class Login
 						ImplicitWait.wait(driver);
 						
 						/*driver.findElement(By.xpath(rp.getPropertyValue("Group"))).click();*/
-						create_branch cb= new create_branch();
-						cb.Create_Branch();
-						
 						/*driver.findElement(By.xpath(rp.getPropertyValue("logout"))).click();*/
 						}
 					}

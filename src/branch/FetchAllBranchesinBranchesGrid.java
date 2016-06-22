@@ -1,6 +1,7 @@
 package branch;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -13,23 +14,25 @@ import org.openqa.selenium.interactions.Actions;
 
 
 
+
 import wait.ImplicitWait;
 import config.Reading_Properties;
 
 public class FetchAllBranchesinBranchesGrid {
 	
-	public String allbranches(WebDriver driver) throws Exception
+	public List<String> allbranches(WebDriver driver) throws Exception
 	{
-
+		List<String> list = new ArrayList<String>();
 		List<WebElement>branches=driver.findElements(By.xpath("//div[@id='divEnterprises']/div"));
-
+		/*int we=branches.size();
+		for(int i=0;i<we;i++)
+		{*/
 		for(WebElement bran:branches)
 		{
 			String txt=bran.getText();
-			return txt;
+			list.add(txt);
 	}
-		return null;
-
+		return list;
 }
 
 	public void FetchAllBranches(WebDriver driver) throws Exception 
@@ -143,3 +146,16 @@ public class FetchAllBranchesinBranchesGrid {
 		  }
 		
 }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
