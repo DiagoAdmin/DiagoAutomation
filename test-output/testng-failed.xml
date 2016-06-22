@@ -5,9 +5,12 @@
     <classes>
       <class name="login.BeforeLogin">
         <methods>
+          <include name="tearDown"/>
           <include name="setUp"/>
-          <include name="login"/>
+          <include name="dbClose"/>
+          <include name="branchCreation"/>
           <include name="dbTest"/>
+          <include name="login"/>
         </methods>
       </class> <!-- login.BeforeLogin -->
     </classes>
