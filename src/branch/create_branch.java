@@ -29,11 +29,21 @@ public class create_branch {
 		FetchAllBranchesinBranchesGrid FABG=new FetchAllBranchesinBranchesGrid();
 		/*FABG.FetchAllBranches(driver);*/
 		List<String> txt=FABG.allbranches(driver);
-		if(txt.contains("Sample Branch"))
+		
+		List<String> allbranchesdb=FABG.allBranchesfromDB();
+		ImplicitWait.wait(driver);
+		driver.findElement(By.xpath(rp.getPropertyValue("CreateBranch"))).click();
+		for(int i=0;i<allbranchesdb.size();i++)
 		{
-			System.out.println();
+			WebElement branchcreatio=driver.findElement(By.id(rp.getPropertyValue("Branch_Name")));
+			branchcreatio.sendKeys(allbranchesdb.get(i));
+			
+			if(txt.contains(allbranchesdb))
+			{
+				System.out.println();
+			}
 		}
-		System.out.println(txt);
+
 		ImplicitWait.wait(driver);
 		driver.findElement(By.xpath(rp.getPropertyValue("CreateBranch"))).click();
 		ImplicitWait.wait(driver);
