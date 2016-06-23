@@ -31,7 +31,7 @@ public class create_branch {
 		List<String> txt=FABG.allbranches(driver);
 		if(txt.contains("Sample Branch"))
 		{
-			
+			System.out.println();
 		}
 		System.out.println(txt);
 		ImplicitWait.wait(driver);
