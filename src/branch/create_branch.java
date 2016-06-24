@@ -1,22 +1,27 @@
 package branch;
 import java.io.IOException;
 import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+
 import wait.ImplicitWait;
 import config.Reading_Properties;
 
 public class create_branch {
-	/*WebDriver driver;*/
+	WebDriver driver;
+	Reading_Properties rp=new Reading_Properties();
 	public void Create_Branch(WebDriver driver) throws Exception
 	  {
-		Reading_Properties rp=new Reading_Properties();
-		try {
+		try 
+		{
 			rp.LoadProperties();
-		} catch (IOException e) {
+		}
+		catch (IOException e) 
+		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println();
@@ -35,12 +40,12 @@ public class create_branch {
 		driver.findElement(By.xpath(rp.getPropertyValue("CreateBranch"))).click();
 		for(int i=0;i<allbranchesdb.size();i++)
 		{
-			WebElement branchcreatio=driver.findElement(By.id(rp.getPropertyValue("Branch_Name")));
-			branchcreatio.sendKeys(allbranchesdb.get(i));
+			driver.findElement(By.id(rp.getPropertyValue("Branch_Name"))).sendKeys(allbranchesdb.get(i));
 			
-			if(txt.contains(allbranchesdb))
+			if(!txt.equals(allbranchesdb))
 			{
-				System.out.println();
+				AdditionalInfo();
+				continue;
 			}
 		}
 
@@ -64,22 +69,21 @@ public class create_branch {
 		{
 			e.printStackTrace();
 		}
-		
+	  }
+		public void AdditionalInfo() throws Exception
+		{
 		driver.findElement(By.id(rp.getPropertyValue("Building_Name"))).sendKeys("New Branch");
 		driver.findElement(By.xpath(rp.getPropertyValue("Branch_Adress_Next"))).click();
 		ImplicitWait.wait(driver);
-		/*driver.switchTo().frame(rp.getPropertyValue("AllDays_Frame"));*/
 		driver.findElement(By.xpath(rp.getPropertyValue("AllDays_Frame"))).click();
-		
-	
-		
-driver.findElement(By.xpath(rp.getPropertyValue("Working_Time_From"))).sendKeys("0");
+		driver.findElement(By.xpath(rp.getPropertyValue("Working_Time_From"))).sendKeys("0");
 		driver.findElement(By.xpath(rp.getPropertyValue("Working_Time_To"))).sendKeys("23");
 		WebElement dept=driver.findElement(By.xpath(rp.getPropertyValue("Department")));
 		dept.click();
 		List<WebElement> deptvalues= driver.findElements(By.xpath(rp.getPropertyValue("Department")));
 		Actions actions = new Actions(driver);
-		for(int i = 0; i <= deptvalues.size(); i++){
+		for(int i = 0; i <= deptvalues.size(); i++)
+		{
 		/*for(WebElement i: deptvalues)*/
 			for(int j=deptvalues.size();j>=i;j--)
 			{
@@ -88,27 +92,8 @@ driver.findElement(By.xpath(rp.getPropertyValue("Working_Time_From"))).sendKeys(
 		    driver.findElement(By.xpath(rp.getPropertyValue("Dept"))).click();
 		}
 		}
-
-		//here "position" is , ur desired combo box option position,
-		//for ex. u want to choose 3rd option,so ur "position" will be 3.
-		
-		/*WebElement dept_category=driver.findElement(By.xpath(rp.getPropertyValue("Department_Category")));
-		
-		Select s=new Select(dept);
-		s.selectByVisibleText("BIO-CHEMISTRY (LAB)");
-		
-		Select s1=new Select(dept_category);
-		s1.selectByVisibleText("Diagnostic");*/
 		driver.findElement(By.xpath(rp.getPropertyValue("AdditionalInfo1"))).click();
 		driver.findElement(By.xpath(rp.getPropertyValue("AdditionalInfo2"))).click();
 		driver.findElement(By.xpath(rp.getPropertyValue("AdditionalInfo3"))).click();
-		/*wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id(rp.getPropertyValue("Branch_Name")), "Time left: 7 seconds"));
-		wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id(rp.getPropertyValue("Building_Name")), "Time left: 7 seconds"));*/
-		
-		
-		
-	  
 	  }
-	
-
 }
