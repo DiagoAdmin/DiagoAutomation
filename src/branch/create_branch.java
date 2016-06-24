@@ -22,7 +22,7 @@ public class create_branch {
 		}
 		catch (IOException e) 
 		{
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			System.out.println();
 		}
@@ -38,6 +38,9 @@ public class create_branch {
 		List<String> allbranchesdb=FABG.allBranchesfromDB();
 		ImplicitWait.wait(driver);
 		driver.findElement(By.xpath(rp.getPropertyValue("CreateBranch"))).click();
+		String branchexists=driver.findElement(By.id("enterpriseId-error")).getText();
+		
+		
 		for(int i=0;i<allbranchesdb.size();i++)
 		{
 			driver.findElement(By.id(rp.getPropertyValue("Branch_Name"))).sendKeys(allbranchesdb.get(i));
@@ -47,13 +50,12 @@ public class create_branch {
 				AdditionalInfo();
 				continue;
 			}
+			else if(branchexists != null)
+			{
+				
+			}
 		}
 
-		ImplicitWait.wait(driver);
-		driver.findElement(By.xpath(rp.getPropertyValue("CreateBranch"))).click();
-		ImplicitWait.wait(driver);
-		driver.findElement(By.id(rp.getPropertyValue("Branch_Name"))).sendKeys("test group");
-		String branchexists=driver.findElement(By.id("enterpriseId-error")).getText();
 		try{
 			if(branchexists.contains("Branch Already Exists"))
 		/*if(driver.getPageSource().contains("Branch Already Exists"))*/
@@ -76,8 +78,8 @@ public class create_branch {
 		driver.findElement(By.xpath(rp.getPropertyValue("Branch_Adress_Next"))).click();
 		ImplicitWait.wait(driver);
 		driver.findElement(By.xpath(rp.getPropertyValue("AllDays_Frame"))).click();
-		driver.findElement(By.xpath(rp.getPropertyValue("Working_Time_From"))).sendKeys("0");
-		driver.findElement(By.xpath(rp.getPropertyValue("Working_Time_To"))).sendKeys("23");
+		driver.findElement(By.xpath(rp.getPropertyValue("Working_Time_From"))).sendKeys("10");
+		driver.findElement(By.xpath(rp.getPropertyValue("Working_Time_To"))).sendKeys("12");
 		WebElement dept=driver.findElement(By.xpath(rp.getPropertyValue("Department")));
 		dept.click();
 		List<WebElement> deptvalues= driver.findElements(By.xpath(rp.getPropertyValue("Department")));
