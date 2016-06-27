@@ -24,7 +24,7 @@ public class create_branch {
 		{
 			
 			e.printStackTrace();
-			System.out.println();
+			
 		}
 		WebElement ele=driver.findElement(By.xpath(rp.getPropertyValue("Group")));
 		ele.click();
@@ -50,27 +50,15 @@ public class create_branch {
 				AdditionalInfo();
 				continue;
 			}
-			else if(branchexists != null)
+			else if(branchexists.contains("Branch Already Exists")||branchexists.contains("Branch Name is required"))
 			{
-				
+				driver.findElement(By.id(rp.getPropertyValue("Building_Name"))).clear();
+				AdditionalInfo();
+				continue;
 			}
 		}
 
-		try{
-			if(branchexists.contains("Branch Already Exists"))
-		/*if(driver.getPageSource().contains("Branch Already Exists"))*/
-		{ 
-			driver.close();
-			System.out.println();
-			driver.quit();
-			
-			
-		}
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
+		
 	  }
 		public void AdditionalInfo() throws Exception
 		{
