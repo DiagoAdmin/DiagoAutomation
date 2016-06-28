@@ -8,82 +8,127 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
+import screenshot.GetScreenshot;
 import wait.ImplicitWait;
 import config.Reading_Properties;
 
-public class create_branch {
+public class create_branch
+{
 	WebDriver driver;
+	FetchAllBranchesinBranchesGrid FABG=new FetchAllBranchesinBranchesGrid();
+	List<String> allbranchesdb=FABG.allBranchesfromDB();
 	Reading_Properties rp=new Reading_Properties();
-	public void Create_Branch(WebDriver driver) throws Exception
-	  {
-		try 
-		{
-			rp.LoadProperties();
-		}
-		catch (IOException e) 
-		{
-			
-			e.printStackTrace();
-			
-		}
-		WebElement ele=driver.findElement(By.xpath(rp.getPropertyValue("Group")));
-		ele.click();
-		ImplicitWait.wait(driver);
-		driver.findElement(By.xpath(rp.getPropertyValue("Branches"))).click();
-		ImplicitWait.wait(driver);
-		FetchAllBranchesinBranchesGrid FABG=new FetchAllBranchesinBranchesGrid();
-		/*FABG.FetchAllBranches(driver);*/
-		List<String> txt=FABG.allbranches(driver);
-		
-		List<String> allbranchesdb=FABG.allBranchesfromDB();
-		ImplicitWait.wait(driver);
-		driver.findElement(By.xpath(rp.getPropertyValue("CreateBranch"))).click();
-		String branchexists=driver.findElement(By.id("enterpriseId-error")).getText();
-		
-		
-		for(int i=0;i<allbranchesdb.size();i++)
-		{
-			driver.findElement(By.id(rp.getPropertyValue("Branch_Name"))).sendKeys(allbranchesdb.get(i));
-			
-			if(!txt.equals(allbranchesdb))
+	GetScreenshot gsc=new GetScreenshot();
+		public void Create_Branch(WebDriver driver) throws Exception
 			{
-				AdditionalInfo();
-				continue;
-			}
-			else if(branchexists.contains("Branch Already Exists")||branchexists.contains("Branch Name is required"))
-			{
-				driver.findElement(By.id(rp.getPropertyValue("Building_Name"))).clear();
-				AdditionalInfo();
-				continue;
-			}
-		}
+				try 
+					{
+						rp.LoadProperties();
+					}
+				catch (IOException e) 
+					{
+			
+						e.printStackTrace();
+			
+					}
+	WebElement ele=driver.findElement(By.xpath(rp.getPropertyValue("Group")));
+	ele.click();
+	ImplicitWait.wait(driver);
+	driver.findElement(By.xpath(rp.getPropertyValue("Branches"))).click();
+	ImplicitWait.wait(driver);
+		
+	List<String> txt=FABG.allbranches(driver);
+		
+	ImplicitWait.wait(driver);
+	driver.findElement(By.xpath(rp.getPropertyValue("CreateBranch"))).click();
+	ImplicitWait.wait(driver);
+	/*String branchexists=driver.findElement(By.id("enterpriseId-error")).getText();*/
+	/*List<String> branchvalidationmessage=FABG.branchvalidationmessage(driver);*/
+		
+				for(int i=0;i<allbranchesdb.size();i++)
+					{
+						ImplicitWait.wait(driver);
+						driver.findElement(By.id(rp.getPropertyValue("Branch_Name"))).sendKeys(allbranchesdb.get(i));
+						ImplicitWait.wait(driver);
+						List<String> branchvalidationmessage=FABG.branchvalidationmessage(driver);
+						ImplicitWait.wait(driver);
+							if(branchvalidationmessage.contains("Branch Already Exists")||branchvalidationmessage.contains("Branch Name is required"))
+								{
+								ImplicitWait.wait(driver);
+								gsc.Screenshot(driver);
+									driver.findElement(By.id(rp.getPropertyValue("Branch_Name"))).sendKeys(Keys.chord(Keys.CONTROL, "a"),Keys.chord(Keys.DELETE));
+									ImplicitWait.wait(driver);
+									continue;
+				
+				
+								}
+
+							else  if(!txt.equals(allbranchesdb))
+								{
+									ImplicitWait.wait(driver);
+									WebElement build=driver.findElement(By.id(rp.getPropertyValue("Building_Name")));
+									build.click();
+									ImplicitWait.wait(driver);
+									build.sendKeys(allbranchesdb.get(0));
+									AdditionalInfo(driver);
+									continue;
+				
+								}
+			
+					}
 
 		
-	  }
-		public void AdditionalInfo() throws Exception
-		{
-		driver.findElement(By.id(rp.getPropertyValue("Building_Name"))).sendKeys("New Branch");
-		driver.findElement(By.xpath(rp.getPropertyValue("Branch_Adress_Next"))).click();
-		ImplicitWait.wait(driver);
-		driver.findElement(By.xpath(rp.getPropertyValue("AllDays_Frame"))).click();
-		driver.findElement(By.xpath(rp.getPropertyValue("Working_Time_From"))).sendKeys("10");
-		driver.findElement(By.xpath(rp.getPropertyValue("Working_Time_To"))).sendKeys("12");
-		WebElement dept=driver.findElement(By.xpath(rp.getPropertyValue("Department")));
-		dept.click();
-		List<WebElement> deptvalues= driver.findElements(By.xpath(rp.getPropertyValue("Department")));
-		Actions actions = new Actions(driver);
-		for(int i = 0; i <= deptvalues.size(); i++)
-		{
-		/*for(WebElement i: deptvalues)*/
-			for(int j=deptvalues.size();j>=i;j--)
+			}
+		public void AdditionalInfo(WebDriver driver) throws Exception
 			{
-			actions.sendKeys(Keys.DOWN).build().perform();//press down arrow key
-		    actions.sendKeys(Keys.ENTER).build().perform();//press enter
-		    driver.findElement(By.xpath(rp.getPropertyValue("Dept"))).click();
-		}
-		}
-		driver.findElement(By.xpath(rp.getPropertyValue("AdditionalInfo1"))).click();
-		driver.findElement(By.xpath(rp.getPropertyValue("AdditionalInfo2"))).click();
-		driver.findElement(By.xpath(rp.getPropertyValue("AdditionalInfo3"))).click();
-	  }
-}
+				/*driver.findElement(By.id(rp.getPropertyValue("Building_Name"))).sendKeys(allbranchesdb.get(0));*/
+				ImplicitWait.wait(driver);
+				driver.findElement(By.xpath(rp.getPropertyValue("Branch_Adress_Next"))).click();
+				ImplicitWait.wait(driver);
+				driver.findElement(By.xpath(rp.getPropertyValue("AllDays_Frame"))).click();
+				ImplicitWait.wait(driver);
+				driver.findElement(By.xpath(rp.getPropertyValue("Working_Time_From"))).sendKeys("10");
+				ImplicitWait.wait(driver);
+				driver.findElement(By.xpath(rp.getPropertyValue("Working_Time_To"))).sendKeys("12");
+				ImplicitWait.wait(driver);
+				ImplicitWait.wait(driver);
+				driver.findElement(By.xpath(rp.getPropertyValue("Dept"))).click();
+				ImplicitWait.wait(driver);
+				List<WebElement> deptvalues= driver.findElements(By.xpath(rp.getPropertyValue("Department")));
+				ImplicitWait.wait(driver);
+				Actions actions = new Actions(driver);
+					for(int i = 0; i <= deptvalues.size(); i++)
+						{	ImplicitWait.wait(driver);
+							/*for(WebElement i: deptvalues)*/
+							for(int j=deptvalues.size();j>=i;j--)
+								{
+									actions.sendKeys(Keys.DOWN).build().perform();
+									actions.sendKeys(Keys.ENTER).build().perform();
+									driver.findElement(By.xpath(rp.getPropertyValue("Dept"))).click();
+									ImplicitWait.wait(driver);
+								}
+						}
+					driver.findElement(By.xpath(rp.getPropertyValue("Dept_Category"))).click();
+					ImplicitWait.wait(driver);
+					List<WebElement> dept_category=driver.findElements(By.xpath(rp.getPropertyValue("Department_Category")));
+					
+					for(int i = 0; i <= dept_category.size();i++)
+						{
+							for(int j=0;j<=i;j++)
+								{
+
+									actions.sendKeys(Keys.DOWN).build().perform();//press down arrow key
+									actions.sendKeys(Keys.ENTER).build().perform();//press enter
+									driver.findElement(By.xpath(rp.getPropertyValue("Dept_Category"))).click();
+									ImplicitWait.wait(driver);
+
+								}
+						}
+					
+				driver.findElement(By.xpath(rp.getPropertyValue("AdditionalInfo1"))).click();
+				ImplicitWait.wait(driver);
+				driver.findElement(By.xpath(rp.getPropertyValue("AdditionalInfo2"))).click();
+				ImplicitWait.wait(driver);
+				driver.findElement(By.xpath(rp.getPropertyValue("AdditionalInfo3"))).click();
+			}
+	}
