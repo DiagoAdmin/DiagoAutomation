@@ -48,9 +48,9 @@ public class create_branch
 				for(int i=0;i<allbranchesdb.size();i++)
 					{
 						ImplicitWait.wait(driver);
-						driver.findElement(By.id(rp.getPropertyValue("Branch_Name"))).sendKeys(allbranchesdb.get(i));
+						/*driver.findElement(By.id(rp.getPropertyValue("Branch_Name"))).sendKeys(allbranchesdb.get(i));
 						ImplicitWait.wait(driver);
-						List<String> branchvalidationmessage=FABG.branchvalidationmessage(driver);
+						List<String> branchvalidationmessage=FABG.branchvalidationmessage(driver);*/
 						ImplicitWait.wait(driver);
 							if(branchvalidationmessage.contains("Branch Already Exists")||branchvalidationmessage.contains("Branch Name is required"))
 								{
