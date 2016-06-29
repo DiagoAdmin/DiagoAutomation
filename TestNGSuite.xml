@@ -1,0 +1,8 @@
+<suite name="Branch">
+<parameter name="browser" value="FF"/>
+<test name="Regression">
+<classes>
+<class name="login.BeforeLogin"/>
+</classes>
+</test>
+</suite>

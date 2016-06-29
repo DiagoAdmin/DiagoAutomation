@@ -42,22 +42,20 @@ public class create_branch
 	ImplicitWait.wait(driver);
 	driver.findElement(By.xpath(rp.getPropertyValue("CreateBranch"))).click();
 	ImplicitWait.wait(driver);
-	/*String branchexists=driver.findElement(By.id("enterpriseId-error")).getText();*/
-	/*List<String> branchvalidationmessage=FABG.branchvalidationmessage(driver);*/
-		
+	
 				for(int i=0;i<allbranchesdb.size();i++)
 					{
 						ImplicitWait.wait(driver);
-						/*driver.findElement(By.id(rp.getPropertyValue("Branch_Name"))).sendKeys(allbranchesdb.get(i));
+						driver.findElement(By.id(rp.getPropertyValue("Branch_Name"))).sendKeys(allbranchesdb.get(i));
 						ImplicitWait.wait(driver);
-						List<String> branchvalidationmessage=FABG.branchvalidationmessage(driver);*/
+						List<String> branchvalidationmessage=FABG.branchvalidationmessage(driver);
 						ImplicitWait.wait(driver);
 							if(branchvalidationmessage.contains("Branch Already Exists")||branchvalidationmessage.contains("Branch Name is required"))
 								{
-								ImplicitWait.wait(driver);
+								/*ImplicitWait.wait(driver);*/
 								gsc.Screenshot(driver);
 									driver.findElement(By.id(rp.getPropertyValue("Branch_Name"))).sendKeys(Keys.chord(Keys.CONTROL, "a"),Keys.chord(Keys.DELETE));
-									ImplicitWait.wait(driver);
+									/*ImplicitWait.wait(driver);*/
 									continue;
 				
 				
