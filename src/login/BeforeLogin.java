@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Statement;
 
+import operations.TakeOrder;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -85,6 +87,12 @@ public class BeforeLogin {
 		{
 			create_branch cb= new create_branch();
 			cb.Create_Branch(driver);
+		}
+		@Test
+		public void Operations() throws Exception
+		{
+			TakeOrder to=new TakeOrder();
+			
 		}
 @AfterClass
 public void tearDown() throws Exception 
