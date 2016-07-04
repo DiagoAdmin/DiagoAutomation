@@ -50,7 +50,6 @@ public class BeforeLogin {
 					Reading_Properties rp=new Reading_Properties();
 					rp.LoadProperties();
 					String queryString = rp.getPropertyValue("loginusers");
-					
 					ResultSet rs = statement.executeQuery(queryString);
 					
 					ImplicitWait.wait(driver);

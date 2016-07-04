@@ -1,7 +1,12 @@
 package jsfilessample;
 
+import java.util.ArrayList;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Sample {
@@ -74,4 +79,5 @@ jse.executeScript("window.history.go(0)");
 
 }
 driver.quit(); // to close browser
+}
 }
