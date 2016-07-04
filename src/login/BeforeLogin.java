@@ -18,6 +18,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import config.Reading_Properties;
+import branch.EditBranch;
 import branch.create_branch;
 import wait.ImplicitWait;
 import databaseConnections.SqlConnection;
@@ -80,16 +81,17 @@ public class BeforeLogin {
 				e.printStackTrace();
 				}
 		}
-		@Test
+	/*	@Test
 		public void branchCreation() throws Exception
 		{
 			create_branch cb= new create_branch();
 			cb.Create_Branch(driver);
-		}
+		}*/
 		@Test
 		public void Operations() throws Exception
 		{
-			TakeOrder to=new TakeOrder();
+			EditBranch ed=new EditBranch();
+			ed.Edit_Branch(driver);
 			
 		}
 @AfterClass
