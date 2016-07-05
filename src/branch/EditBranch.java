@@ -42,16 +42,13 @@ ImplicitWait.wait(driver);
 driver.findElement(By.xpath(rp.getPropertyValue("Branches"))).click();
 ImplicitWait.wait(driver);
 WebElement br=driver.findElement(By.xpath(".//*[@id='divEnterprises']/div[1]/div/div[4]/a/span"));
+/*WebElement dr=driver.findElement(By.xpath(".//*[@id='webuiPopover0']/div[2]/div/ul/li[2]/a"));*/
 Actions as=new Actions(driver);
-as.moveToElement(br).perform();
-ImplicitWait.wait(driver);
-/*JOptionPane.showMessageDialog(null, By.xpath(".//*[@id='webuiPopover0']/div[2]/div/ul/li[1]/a"));*/
-JavascriptExecutor Executor = (JavascriptExecutor)driver;
-Executor.executeScript("arguments[0].click();", driver.findElement(By.xpath(".//*[@id='divEnterprises']/div[1]/div/div[4]/a/span")));
-/*driver.findElement(By.xpath(".//*[@id='webuiPopover0']/div[2]/div/ul/li[1]/a")).click();*/
-ImplicitWait.wait(driver);
+as.clickAndHold(br).build().perform();
+as.moveToElement(driver.findElement(By.xpath(".//*[@id='webuiPopover0']/div[2]/div/ul/li[2]/a"))).click().build().perform();
 ImplicitWait.wait(driver);
 
+ImplicitWait.wait(driver);
 }
 
 }

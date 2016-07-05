@@ -81,12 +81,12 @@ public class BeforeLogin {
 				e.printStackTrace();
 				}
 		}
-	/*	@Test
+		@Test
 		public void branchCreation() throws Exception
 		{
 			create_branch cb= new create_branch();
 			cb.Create_Branch(driver);
-		}*/
+		}
 		@Test
 		public void Operations() throws Exception
 		{

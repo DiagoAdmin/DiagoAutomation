@@ -23,6 +23,7 @@ public class FetchAllBranchesinBranchesGrid {
 		{*/
 		for(WebElement bran:branches)
 		{
+			System.out.println(branches.size());
 			String txt=bran.getText();
 			list.add(txt.split("\n")[0]);
 	}
