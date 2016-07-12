@@ -1,63 +1,44 @@
 package branch;
-import java.awt.List;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.io.IOException;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import config.Reading_Properties;
-import databaseConnections.SqlConnection;
 
 
 public class AllBranchesValidation
 {
-	public String DiagoLogin() throws Exception{
-		
-		try
+	WebDriver driver;
+	Reading_Properties rp=new Reading_Properties();
+	public void EmailValidation(WebDriver driver) throws Exception
+	{
+		try 
 		{
-			List list=null;
-			Boolean flag = true;
-			String columnval1 = "";
-			if (flag)
-			{
-				Connection conn = SqlConnection.dbConnect();
-				Statement statement = conn.createStatement();
-				Reading_Properties rp=new Reading_Properties();
-				
+			rp.LoadProperties();
+		}
+	catch (IOException e) 
+		{
 
-				String allbrnch=rp.getPropertyValue("allbranches");
-		
-				ResultSet rs = statement.executeQuery(allbrnch);
-			
-								
-			
-				ResultSetMetaData metadata = rs.getMetaData();
-				int columnCount = metadata.getColumnCount();
-				
-				for (int i=0; i<=columnCount; i++)
-				{
-					if(i!=0)
-					{
-						columnval1 = ","+columnval1;
-					
-					}
-					while(rs.next())
-					{
-						columnval1=rs.getString(2);
-						}
-				
-					
-					}
-				
-				}
-			return columnval1;
-			}
-		catch (Exception e)
-		{
 			e.printStackTrace();
-			return e.toString();
-			}
 
 		}
+		
+	}
+	public List<String> Landlinevalidationmessage(WebDriver driver) throws Exception
+	{
+		List<String> list = new ArrayList<String>();
+		List<WebElement>landlinevalidation=driver.findElements(By.id(rp.getPropertyValue("Branch_Create_Landline1_Validation")));
+
+		for(WebElement land:landlinevalidation)
+		{
+			String txt=land.getText();
+			list.add(txt);
+	}
+		return list;
+	}
 	
 	}

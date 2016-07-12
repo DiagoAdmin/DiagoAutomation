@@ -37,4 +37,5 @@ public class Reading_Properties  {
 	public String getPropertyValue(String key){
         return this.prop.getProperty(key);
     }
-    }
+	
+	}

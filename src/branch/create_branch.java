@@ -16,6 +16,7 @@ public class create_branch
 {
 	WebDriver driver;
 	FetchAllBranchesinBranchesGrid FABG=new FetchAllBranchesinBranchesGrid();
+	AllBranchesValidation ABV=new AllBranchesValidation();
 	List<String> allbranchesdb=FABG.allBranchesfromDB();
 	Reading_Properties rp=new Reading_Properties();
 	GetScreenshot gsc=new GetScreenshot();
@@ -68,7 +69,9 @@ public class create_branch
 									build.click();
 									ImplicitWait.wait(driver);
 									build.sendKeys(allbranchesdb.get(0));
-									EmailValidation(driver);
+									AllBranchesValidation abv=new AllBranchesValidation();
+									abv.EmailValidation(driver);
+									
 									ImplicitWait.wait(driver);
 									AdditionalInfo(driver);
 									continue;
@@ -131,8 +134,17 @@ public class create_branch
 				ImplicitWait.wait(driver);
 				driver.findElement(By.xpath(rp.getPropertyValue("AdditionalInfo3"))).click();
 			}
-		public void EmailValidation(WebDriver driver) throws Exception
+		public void Landlinevalidation(WebDriver driver) throws Exception
 		{
+			List<String> txt=ABV.Landlinevalidationmessage(driver);
+			WebElement land=driver.findElement(By.id(rp.getPropertyValue("Branch_Create_Landline1")));
+			land.click();
+			land.clear();
+			land.sendKeys("abc");
+			if(txt.contains("Entered Landline format is not valid."))
+			{
+				
+			}
 			
 		}
-	}
+}
