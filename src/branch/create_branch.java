@@ -68,6 +68,8 @@ public class create_branch
 									build.click();
 									ImplicitWait.wait(driver);
 									build.sendKeys(allbranchesdb.get(0));
+									EmailValidation(driver);
+									ImplicitWait.wait(driver);
 									AdditionalInfo(driver);
 									continue;
 				
@@ -129,4 +131,8 @@ public class create_branch
 				ImplicitWait.wait(driver);
 				driver.findElement(By.xpath(rp.getPropertyValue("AdditionalInfo3"))).click();
 			}
+		public void EmailValidation(WebDriver driver) throws Exception
+		{
+			
+		}
 	}
