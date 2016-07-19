@@ -69,8 +69,8 @@ public class create_branch
 									build.click();
 									ImplicitWait.wait(driver);
 									build.sendKeys(allbranchesdb.get(0));
-									AllBranchesValidation abv=new AllBranchesValidation();
-									abv.EmailValidation(driver);
+									/*AllBranchesValidation abv=new AllBranchesValidation();
+									abv.EmailValidation(driver);*/
 									
 									ImplicitWait.wait(driver);
 									AdditionalInfo(driver);

@@ -17,6 +17,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import config.LocatorsIdentifiers;
 import config.Reading_Properties;
 import branch.EditBranch;
 import branch.create_branch;
@@ -24,7 +25,7 @@ import wait.ImplicitWait;
 import databaseConnections.SqlConnection;
 
 public class BeforeLogin {
-
+	LocatorsIdentifiers LI;
 		WebDriver driver;
 		@BeforeSuite
 		public void dbTest() throws Exception
@@ -34,8 +35,10 @@ public class BeforeLogin {
 		@BeforeTest
 		public void login() throws Exception
 		{
+			
 			System.setProperty("webdriver.chrome.driver", "D:\\chromedriver.exe");
-		driver = new ChromeDriver();
+			LI.startBrowserChrome();
+		/*driver = new ChromeDriver();*/
 			
 		}
 		@BeforeClass
@@ -87,13 +90,13 @@ public class BeforeLogin {
 			create_branch cb= new create_branch();
 			cb.Create_Branch(driver);
 		}
-		@Test
+		/*@Test
 		public void Operations() throws Exception
 		{
 			EditBranch ed=new EditBranch();
 			ed.Edit_Branch(driver);
 			
-		}
+		}*/
 @AfterClass
 public void tearDown() throws Exception 
 {
