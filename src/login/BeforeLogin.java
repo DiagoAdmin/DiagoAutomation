@@ -37,8 +37,7 @@ public class BeforeLogin {
 		{
 			
 			System.setProperty("webdriver.chrome.driver", "D:\\chromedriver.exe");
-			LI.startBrowserChrome();
-		/*driver = new ChromeDriver();*/
+			driver = new ChromeDriver();
 			
 		}
 		@BeforeClass
@@ -69,6 +68,7 @@ public class BeforeLogin {
 						{
 							String columnval1=rs.getString(2);
 							String columnval2=rs.getString(3);
+							/*LI.sendKeys("name", rp.getPropertyValue("username"), columnval1);*/
 							driver.findElement(By.name(rp.getPropertyValue("username"))).sendKeys(columnval1);
 							driver.findElement(By.name(rp.getPropertyValue("password"))).sendKeys(columnval2);
 							driver.findElement(By.xpath(rp.getPropertyValue("Home_Login"))).click();

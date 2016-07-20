@@ -18,12 +18,12 @@ public class LocatorsIdentifiers
 	{
 		driver= new FirefoxDriver();		
 	}
-	//Start Chrome Browser
-	public void startBrowserChrome()
+/*	//Start Chrome Browser
+	public void startBrowserChrome() throws Exception
 	{
-		
+		System.setProperty("webdriver.chrome.driver", "D:\\chromedriver.exe");
 		driver= new ChromeDriver();
-	}
+	}*/
 	//Maximize Browser
 	public void maximiseBrowser()
 	{
@@ -73,7 +73,7 @@ public class LocatorsIdentifiers
 		return id;
 	}
 	//WebElement 
-	public WebElement webElementId(String identifier,String locator)
+	public WebElement webElementId(String identifier,String locator,WebDriver driver) throws Exception
 	{
 		int id=locatorType(identifier);
 		WebElement e=null;
@@ -110,23 +110,23 @@ public class LocatorsIdentifiers
 		return e;
 	}
 	//Sendkey general method
-	public void sendKeys(String identifier,String locator,String content)
+	public void sendKeys(String identifier,String locator,String content) throws Exception
 	{
 		
-		WebElement e=webElementId(identifier, locator);
+		WebElement e=webElementId(identifier, locator, driver);
 		e.sendKeys(content);		
 	}
 	//Clear text  field method
-	public void ClearTextField(String identifier,String locator)
+	public void ClearTextField(String identifier,String locator) throws Exception
 	{
 		
-		WebElement e=webElementId(identifier, locator);
+		WebElement e=webElementId(identifier, locator, driver);
 		e.clear();		
 	}
 	//click general method
-	public void click(String identifier,String locator)
+	public void click(String identifier,String locator,WebDriver driver) throws Exception
 	{
-		WebElement e=webElementId(identifier, locator); 
+		WebElement e=webElementId(identifier, locator, driver); 
 		e.click();
 	}
 	//verify title of the page
@@ -162,9 +162,9 @@ public class LocatorsIdentifiers
 	}
 	
 	//Verify Text
-	public void verifyText(String identifier,String locator,String text)
+	public void verifyText(String identifier,String locator,String text) throws Exception
 	{
-		WebElement e=webElementId(identifier, locator);
+		WebElement e=webElementId(identifier, locator, driver);
 		if (e.getText().equals(text))
 		{
 			System.out.println(text+" displayed");
@@ -175,10 +175,10 @@ public class LocatorsIdentifiers
 		}
 	}
 	//verify element present
-	public void verifyElementPresent(String identifier,String locator)
+	public void verifyElementPresent(String identifier,String locator) throws Exception
 	{
 		boolean s=false;
-		WebElement e=webElementId(identifier, locator);
+		WebElement e=webElementId(identifier, locator, driver);
 		if (e.isDisplayed())
 		{
 			System.out.println("Element present");
@@ -261,9 +261,9 @@ public class LocatorsIdentifiers
 		action =new Actions(driver);
 	}
 	//move to element
-	public Actions movetoElement(String identifier,String locator)
+	public Actions movetoElement(String identifier,String locator) throws Exception
 	{		
-		WebElement e=webElementId(identifier, locator);
+		WebElement e=webElementId(identifier, locator, driver);
 		return action.moveToElement(e);
 	}
 	

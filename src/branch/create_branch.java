@@ -10,6 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 
 import screenshot.GetScreenshot;
 import wait.ImplicitWait;
+import config.LocatorsIdentifiers;
 import config.Reading_Properties;
 
 public class create_branch
@@ -19,6 +20,7 @@ public class create_branch
 	AllBranchesValidation ABV=new AllBranchesValidation();
 	List<String> allbranchesdb=FABG.allBranchesfromDB();
 	Reading_Properties rp=new Reading_Properties();
+	LocatorsIdentifiers LI=new LocatorsIdentifiers();
 	GetScreenshot gsc=new GetScreenshot();
 		public void Create_Branch(WebDriver driver) throws Exception
 			{
@@ -32,8 +34,9 @@ public class create_branch
 						e.printStackTrace();
 			
 					}
-	WebElement ele=driver.findElement(By.xpath(rp.getPropertyValue("Group")));
-	ele.click();
+				LI.click("xpath", rp.getPropertyValue("Group"), driver);
+	/*WebElement ele=driver.findElement(By.xpath(rp.getPropertyValue("Group")));
+	ele.click();*/
 	ImplicitWait.wait(driver);
 	driver.findElement(By.xpath(rp.getPropertyValue("Branches"))).click();
 	ImplicitWait.wait(driver);
