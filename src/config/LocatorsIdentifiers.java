@@ -110,7 +110,7 @@ public class LocatorsIdentifiers
 		return e;
 	}
 	//Sendkey general method
-	public void sendKeys(String identifier,String locator,String content) throws Exception
+	public void sendKeys(String identifier,String locator,String content,WebDriver driver) throws Exception
 	{
 		
 		WebElement e=webElementId(identifier, locator, driver);
