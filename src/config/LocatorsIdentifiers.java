@@ -172,6 +172,7 @@ public class LocatorsIdentifiers
 		else
 		{
 			System.out.println(text+"Did not displayed");
+			
 		}
 	}
 	//verify element present
