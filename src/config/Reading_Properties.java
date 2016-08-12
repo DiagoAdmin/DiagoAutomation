@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.Set;
 
-import org.openqa.selenium.WebDriver;
 
 public class Reading_Properties  {
 	Properties prop=new Properties();
