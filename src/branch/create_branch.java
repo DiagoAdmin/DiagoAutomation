@@ -21,7 +21,7 @@ public class create_branch
 	List<String> allbranchesdb=FABG.allBranchesfromDB();
 	Reading_Properties rp=new Reading_Properties();
 	LocatorsIdentifiers LI=new LocatorsIdentifiers();
-	GetScreenshot gsc=new GetScreenshot()
+	GetScreenshot gsc=new GetScreenshot();
 		public void Create_Branch(WebDriver driver) throws Exception
 			{
 				try 
