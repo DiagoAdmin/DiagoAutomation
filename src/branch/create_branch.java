@@ -38,13 +38,15 @@ public class create_branch
 	/*WebElement ele=driver.findElement(By.xpath(rp.getPropertyValue("Group")));
 	ele.click();*/
 	ImplicitWait.wait(driver);
-	driver.findElement(By.xpath(rp.getPropertyValue("Branches"))).click();
+	/*driver.findElement(By.xpath(rp.getPropertyValue("Branches"))).click();*/
+	LI.click("xpath", rp.getPropertyValue("Branches"), driver);
 	ImplicitWait.wait(driver);
 		
 	List<String> txt=FABG.allbranches(driver);
 		
 	ImplicitWait.wait(driver);
-	driver.findElement(By.xpath(rp.getPropertyValue("CreateBranch"))).click();
+	/*driver.findElement(By.xpath(rp.getPropertyValue("CreateBranch"))).click();*/
+	LI.click("xpath", rp.getPropertyValue("CreateBranch"), driver);
 	ImplicitWait.wait(driver);
 	
 				for(int i=0;i<allbranchesdb.size();i++)
