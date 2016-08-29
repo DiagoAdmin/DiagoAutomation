@@ -8,6 +8,8 @@ import java.sql.Statement;
 
 
 
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
@@ -19,7 +21,6 @@ import org.testng.annotations.Test;
 
 import config.LocatorsIdentifiers;
 import config.Reading_Properties;
-
 import branch.create_branch;
 import wait.ImplicitWait;
 import databaseConnections.SqlConnection;
@@ -41,7 +42,7 @@ public class BeforeLogin {
 			
 		}
 		@BeforeClass
-		public void setUp()
+		public void setUp() throws Exception
 		{
 			try
 			{
@@ -70,13 +71,16 @@ public class BeforeLogin {
 							String columnval2=rs.getString(3);
 							/*LI.sendKeys("name", rp.getPropertyValue("username"), columnval1);*/
 							/*driver.findElement(By.name(rp.getPropertyValue("username"))).sendKeys(columnval1);*/
-							LI.sendKeys("name", rp.getPropertyValue("username"), columnval1,driver);
-							LI.sendKeys("name", rp.getPropertyValue("password"), columnval2,driver);
+							LI.sendKeys("name", rp.getPropertyValue("username"), columnval1);
+							System.out.println();
+							/*LI.sendKeys("name", rp.getPropertyValue("password"), columnval2, driver);*/
 							/*driver.findElement(By.name(rp.getPropertyValue("password"))).sendKeys(columnval2);*/
 							/*driver.findElement(By.xpath(rp.getPropertyValue("Home_Login"))).click();*/
 							LI.click("xpath", rp.getPropertyValue("Home_Login"), driver);
 							
 							ImplicitWait.wait(driver);
+driver.findElement(By.xpath("html/body/div[1]/aside/section/ul")).getText();
+System.out.println();
 
 							}
 						}
